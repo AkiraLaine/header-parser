@@ -5,7 +5,7 @@ var os = require("os")
 
 app.get("/", function(req,res){
     var returnObj = {};
-    returnObj.ip = ip.address();
+    returnObj.ip = req.headers['x-forwarded-for'];
     returnObj.lang = req.acceptedLanguages[0];
     returnObj.agent = req.headers["user-agent"];
     res.send(returnObj)
